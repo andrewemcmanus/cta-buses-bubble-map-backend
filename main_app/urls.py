@@ -7,6 +7,6 @@ router = routers.DefaultRouter()
 urlpatterns = [
 
 path('', views.index, name="index"),
-path('api/', include(router.urls))
+path('api/', include(router.urls)),
 
 ]
