@@ -7,4 +7,5 @@ class Bubble(models.Model):
     alightings = models.FloatField
     stop_id = models.IntegerField
 
-    
+    def __str__(self):
+        return self.stop_id
