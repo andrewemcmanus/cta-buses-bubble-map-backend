@@ -2,9 +2,9 @@ from django.db import models, migrations
 import jsonfield
 
 class Bubble(models.Model):
-    stop_id = models.IntegerField
-    boardings = models.DecimalField
-    alightings = models.DecimalField
+    stop_id = models.IntegerField()
+    boardings = models.FloatField()
+    alightings = models.FloatField()
     location = jsonfield.JSONField()
 
     def __str__(self):

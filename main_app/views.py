@@ -1,5 +1,6 @@
 import csv, io
 import pandas as pd
+import numpy as np
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
@@ -35,15 +36,18 @@ def data_upload(request):
     # io_string = io.StringIO(data_set)
     # next(io_string)
     data_set = pd.read_csv(csv_file)
+    stop_ids = data_set['stop_id'].tolist()
+    # can these simply be separated from panda series into lists, and then written to the database below?
+    # rather than iterating through the CSV as is?
     # location_set = data_set['location']
     # print(location_set)
 
     for row in data_set:
         _, created = Bubble.objects.update_or_create(
-            stop_id=data_set['stop_id'],
-            boardings=data_set['boardings'],
-            alightings=data_set['alightings'],
-            location=data_set['location']
+            stop_id = data_set['stop_id'].astype(int),
+            boardings = data_set['boardings'].apply(lambda x: float(x)),
+            alightings = data_set['alightings'].apply(lambda x: float(x)),
+            location = data_set['location']
         )
     # for column in csv.reader(io_string, delimiter=',', quotechar="|"):
     #     _, created = Bubble.objects.update_or_create(
