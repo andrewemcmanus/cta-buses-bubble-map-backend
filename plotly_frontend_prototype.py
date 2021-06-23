@@ -30,10 +30,11 @@ for i in range(len(alights)):
     alightings.append(float(alights[i] * 0.2))
 
 # print(newstrings)
-
+# new GeoJSON id for locationmode
 fig = go.Figure()
 fig.add_trace(go.Scattergeo(
-    locationmode = 'USA-states',
+    # locationmode = 'USA-states',
+    locationmode = 'geojson-id',
     lon = longitudes,
     lat = latitudes,
     marker = dict(
