@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 
 df = pd.read_csv('./stop_id-board-alight-location.csv')
 df.head()
-for column in csv.reader(df):
-    print(value)
+# for column in csv.reader(df):
+    # print(value)
 # df['text'] = df['stop_id'] + df['boardings'] + df['alightings'] + df['location']
 locations = df['location'].tolist()
 latitudes = []
@@ -29,8 +29,10 @@ for i in range(len(boards)):
 for i in range(len(alights)):
     alightings.append(float(alights[i] * 0.2))
 
-# print(newstrings)
+# './chicago-community-areas.geojson'
 # new GeoJSON id for locationmode
+# fig update_traces?
+
 fig = go.Figure()
 fig.add_trace(go.Scattergeo(
     # locationmode = 'USA-states',
@@ -44,9 +46,8 @@ fig.add_trace(go.Scattergeo(
         line_width=0.5,
         sizemode = 'area'
     )
-
 ))
-
+# print(geojson)
 fig.update_layout(
         title_text = 'October 2012 CTA bus boardings',
         showlegend = True,
