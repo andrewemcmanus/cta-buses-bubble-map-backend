@@ -35,15 +35,15 @@ for i in range(len(alights)):
 
 fig = go.Figure()
 fig.add_trace(go.Scattergeo(
-    # locationmode = 'USA-states',
-    locationmode = 'geojson-id',
+    locationmode = 'USA-states',
+    # locationmode = 'geojson-id',
     lon = longitudes,
     lat = latitudes,
     marker = dict(
         size = boardings,
         color = "royalblue",
-        line_color='rgb(40,40,40)',
-        line_width=0.5,
+        line_color = 'rgb(40,40,40)',
+        line_width = 0.5,
         sizemode = 'area'
     )
 ))
@@ -52,6 +52,7 @@ fig.update_layout(
         title_text = 'October 2012 CTA bus boardings',
         showlegend = True,
         geo = dict(
+            fitbounds = 'locations',
             scope = 'usa',
             landcolor = 'rgb(217, 217, 217)',
         )
