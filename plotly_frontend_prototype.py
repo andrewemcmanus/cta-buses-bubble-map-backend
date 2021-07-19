@@ -25,9 +25,9 @@ boards = df['boardings'].tolist()
 alights = df['alightings'].tolist()
 # scale = 200
 for i in range(len(boards)):
-    boardings.append(float(boards[i] * 0.2))
+    boardings.append(float(boards[i] * 0.1))
 for i in range(len(alights)):
-    alightings.append(float(alights[i] * 0.2))
+    alightings.append(float(alights[i] * 0.1))
 
 # './chicago-community-areas.geojson'
 # new GeoJSON id for locationmode
@@ -43,7 +43,7 @@ fig.add_trace(go.Scattergeo(
         size = boardings,
         color = "royalblue",
         line_color = 'rgb(40,40,40)',
-        line_width = 0.5,
+        line_width = 0.9,
         sizemode = 'area'
     )
 ))
