@@ -33,8 +33,8 @@ for i in range(len(alights)):
 # new GeoJSON id for locationmode
 # fig update_traces?
 
-fig = go.Figure()
-fig.add_trace(go.Scattergeo(
+first = go.Figure()
+first.add_trace(go.Scattergeo(
     locationmode = 'USA-states',
     # locationmode = 'geojson-id',
     lon = longitudes,
@@ -48,7 +48,7 @@ fig.add_trace(go.Scattergeo(
     )
 ))
 # print(geojson)
-fig.update_layout(
+first.update_layout(
         title_text = 'October 2012 CTA bus boardings',
         showlegend = True,
         geo = dict(
@@ -58,4 +58,31 @@ fig.update_layout(
         )
     )
 
-fig.show()
+first.show()
+
+second = go.Figure()
+second.add_trace(go.Scattergeo(
+    locationmode = 'USA-states',
+    # locationmode = 'geojson-id',
+    lon = longitudes,
+    lat = latitudes,
+    marker = dict(
+        size = alightings,
+        color = "yellow",
+        line_color = 'rgb(40,40,40)',
+        line_width = 0.9,
+        sizemode = 'area'
+    )
+))
+# print(geojson)
+second.update_layout(
+        title_text = 'October 2012 CTA bus alightings',
+        showlegend = True,
+        geo = dict(
+            fitbounds = 'locations',
+            scope = 'usa',
+            landcolor = 'rgb(217, 217, 217)',
+        )
+    )
+
+second.show()
